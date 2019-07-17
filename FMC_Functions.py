@@ -125,11 +125,10 @@ ACP_ID=list1[1]['id']
 
 #get list of accessrules in acp
 ACL_LIST=GET_ACCESSRULE_LIST(SERVER_IP,token,ACP_ID)
-print(json.dumps(ACL_LIST,sort_keys=True,indent=4, separators=(',', ': ')))
 for item in ACL_LIST['items']:
     RULE_ID=str(item['id'])
     print("================="+item['name']+"=================")
     #get access rule details
-    #print(GET_ACCESSRULE_DETAIL(SERVER_IP,USERNAME,PASSWORD,ACP_ID,RULE_ID))
-    print(json.dumps(GET_ACCESSRULE_DETAIL(SERVER_IP,token,ACP_ID,RULE_ID),sort_keys=True,indent=4, separators=(',', ': ')))
+    print(GET_ACCESSRULE_DETAIL(SERVER_IP,token,ACP_ID,RULE_ID))
+    #print(json.dumps(GET_ACCESSRULE_DETAIL(SERVER_IP,token,ACP_ID,RULE_ID),sort_keys=True,indent=4, separators=(',', ': ')))
     print("==================================================================================")
