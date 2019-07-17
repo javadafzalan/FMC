@@ -22,4 +22,4 @@ for item in ACL_LIST['items']:
     #get access rule details
     print(GET_ACCESSRULE_DETAIL(SERVER_IP,token,ACP_ID,RULE_ID))
     #print(json.dumps(GET_ACCESSRULE_DETAIL(SERVER_IP,token,ACP_ID,RULE_ID),sort_keys=True,indent=4, separators=(',', ': ')))
-    print("==================================================================================")
+    print("=========================================================")
