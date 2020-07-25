@@ -6,7 +6,7 @@ from FMC_Functions import GET_ACCESSRULE_DETAIL
 ## Main program  ##
 import json
 SERVER_IP="192.168.1.48"
-USERNAME="javad"
+USERNAME="admin"
 PASSWORD="P@ssw0rd"
 #get list of acp
 token=GET_LOGIN_TOKEN(SERVER_IP,USERNAME,PASSWORD)
