@@ -7,6 +7,7 @@ from FMC_Functions import GET_ACCESSRULE_DETAIL
 import json
 SERVER_IP="192.168.1.1"
 #comment for credentials
+##another edit for credentials
 USERNAME="admin"
 PASSWORD="P@ssw0rd"
 #get list of acp
