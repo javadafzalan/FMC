@@ -27,15 +27,15 @@ def GET_DOMAIN_UUID(IP,AUTH_TOKEN):
     # retruns domain-name and domain uuid as a list : ["domain name" , "domain uuid"]
     try:   
         headers = {'Content-Type': 'application/json'}
-        server = "https://"+ip
-        headers['X-auth-access-token']=auth_token
+        server = "https://"+IP
+        headers['X-auth-access-token']=AUTH_TOKEN
         api_path = "/api/fmc_platform/v1/info/domain"    # param
         url = server + api_path
         r = requests.get(url, headers=headers, verify=False)
         status_code = r.status_code
         resp = r.text
         if (status_code == 200):
-            print("GET successful. Response data --> ")
+            #print("GET successful. Response data --> ")
             json_resp = json.loads(resp)
             domain_uuid=json_resp["items"][0]["uuid"]
             domain_name=json_resp["items"][0]["name"]
@@ -137,3 +137,33 @@ def GET_ACCESSRULE_DETAIL(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID,RULE_ID):
         if r : r.close()
     return json_resp
 ##########################################################################################
+def GET_OBJ_NETWORKS(IP,DOMAIN_UUID,TOKEN_ID,TYPE):
+    # type variable could be 4 values : hosts,networks,networkaddresses(includes hosts and networks),ranges
+    import json
+    import sys
+    import requests 
+    r = None
+    server="https://"+IP
+    headers = {'Content-Type': 'application/json'}
+    # GET OPERATION
+    try:
+        headers['X-auth-access-token']=TOKEN_ID
+        api_path = "/api/fmc_config/v1/domain/{}/object/{}?limit=5000&expanded=true".format(DOMAIN_UUID,TYPE)
+        url = server + api_path
+        if (url[-1] == '/'):
+            url = url[:-1]
+        r = requests.get(url, headers=headers, verify=False)
+        status_code = r.status_code
+        resp = r.text
+        if (status_code == 200):
+            #print("GET successful. Response data --> ")
+            json_resp = json.loads(resp)
+            #print(json.dumps(json_resp,sort_keys=True,indent=4, separators=(',', ': ')))
+            return json_resp
+        else:
+            r.raise_for_status()
+            print("Error occurred in GET --> "+resp)
+    except requests.exceptions.HTTPError as err:
+        print ("Error in connection --> "+str(err)) 
+    finally:
+        if r : r.close()
