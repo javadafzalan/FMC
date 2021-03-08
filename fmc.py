@@ -4,6 +4,7 @@ from FMC_Functions import GET_ACCESSRULE_DETAIL
 from FMC_Functions import GET_AUTH_TOKEN
 from FMC_Functions import GET_DOMAIN_UUID
 from FMC_Functions import GET_OBJ_NETWORKS
+from FMC_Functions import GET_NETWORKS_GROUPS
 import time
 ## Main program  ##
 import json
@@ -19,11 +20,10 @@ print(token)
 #Get Domain UUID
 uuid=GET_DOMAIN_UUID(SERVER_IP,token)[1]
 print(uuid)
+###########################################################
 #Get list of Network Objects
 host_list=GET_OBJ_NETWORKS(SERVER_IP,uuid,token,"networkaddresses")
 OBJECT_DETAIL_LIST=[]
-
-#print(json.dumps(host_list["items"],indent=5, separators=(',', ': ')))
 #create a list of organized objects using json output
 for item in host_list["items"]:
     OBJECT_DETAIL_LIST.append({
@@ -34,6 +34,24 @@ for item in host_list["items"]:
 
 for i in OBJECT_DETAIL_LIST:
     print(i)
-print(len(OBJECT_DETAIL_LIST))
-print("**********************")
+###########################################################
+#GET networkgroup objects
+network_groups=GET_NETWORKS_GROUPS(SERVER_IP,uuid,token)
+GROUP_OBJ_DETAIL_LIST=[]
+for item in network_groups["items"]:
+    if("literals" in item):
+        GROUP_OBJ_DETAIL_LIST.append({
+        "name" : item["name"],
+        "value" : item["literals"],
 
+        })
+    if("objects" in item):
+        GROUP_OBJ_DETAIL_LIST.append({
+        "name" : item["name"],
+        "value" : item["objects"],
+        
+        })
+for item in GROUP_OBJ_DETAIL_LIST:
+    print(item)
+    print("###############")
+###########################################################

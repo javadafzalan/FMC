@@ -167,3 +167,33 @@ def GET_OBJ_NETWORKS(IP,DOMAIN_UUID,TOKEN_ID,TYPE):
         print ("Error in connection --> "+str(err)) 
     finally:
         if r : r.close()
+def GET_NETWORKS_GROUPS(IP,DOMAIN_UUID,TOKEN_ID):
+    # type variable could be 4 values : hosts,networks,networkaddresses(includes hosts and networks),ranges
+    import json
+    import sys
+    import requests 
+    r = None
+    server="https://"+IP
+    headers = {'Content-Type': 'application/json'}
+    # GET OPERATION
+    try:
+        headers['X-auth-access-token']=TOKEN_ID
+        api_path = "/api/fmc_config/v1/domain/{}/object/networkgroups?limit=5000&expanded=true".format(DOMAIN_UUID)
+        url = server + api_path
+        if (url[-1] == '/'):
+            url = url[:-1]
+        r = requests.get(url, headers=headers, verify=False)
+        status_code = r.status_code
+        resp = r.text
+        if (status_code == 200):
+            #print("GET successful. Response data --> ")
+            json_resp = json.loads(resp)
+            #print(json.dumps(json_resp,sort_keys=True,indent=4, separators=(',', ': ')))
+            return json_resp
+        else:
+            r.raise_for_status()
+            print("Error occurred in GET --> "+resp)
+    except requests.exceptions.HTTPError as err:
+        print ("Error in connection --> "+str(err)) 
+    finally:
+        if r : r.close()
