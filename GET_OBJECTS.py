@@ -1,13 +1,8 @@
-from FMC_Functions import GET_ACP_LIST
-from FMC_Functions import GET_ACCESSRULE_LIST
-from FMC_Functions import GET_ACCESSRULE_DETAIL
 from FMC_Functions import GET_AUTH_TOKEN
 from FMC_Functions import GET_DOMAIN_UUID
 from FMC_Functions import GET_OBJ_NETWORKS
 from FMC_Functions import GET_NETWORKS_GROUPS
-import time
 ## Main program  ##
-import json
 SERVER_IP="SERVER_IP"
 USERNAME="SERVER_USERNAME"
 PASSWORD="SERVER_PASSWORD"
