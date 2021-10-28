@@ -8,9 +8,9 @@ from FMC_Functions import GET_NETWORKS_GROUPS
 import time
 ## Main program  ##
 import json
-SERVER_IP="172.16.71.21"
-USERNAME="admin"
-PASSWORD="P@ssw0rd"
+SERVER_IP="SERVER_IP"
+USERNAME="SERVER_USERNAME"
+PASSWORD="SERVER_PASSWORD"
 #Generate Token
 token=GET_AUTH_TOKEN(SERVER_IP,USERNAME,PASSWORD)
 print(token)
