@@ -37,8 +37,9 @@ def GET_DOMAIN_UUID(IP,AUTH_TOKEN):
         if (status_code == 200):
             #print("GET successful. Response data --> ")
             json_resp = json.loads(resp)
-            domain_uuid=json_resp["items"][0]["uuid"]
-            domain_name=json_resp["items"][0]["name"]
+            domain = json_resp["items"][0]
+            domain_uuid = domain["uuid"]
+            domain_name = domain["name"]
             return domain_name,domain_uuid
         else:
             r.raise_for_status()
