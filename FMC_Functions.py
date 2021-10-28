@@ -1,5 +1,4 @@
 def GET_AUTH_TOKEN(IP,USERNAME,PASSWORD):
-    import json
     import sys
     import requests
     server = "https://"+IP
@@ -79,7 +78,6 @@ def GET_ACP_LIST(IP,DOMAIN_UUID,TOKEN_ID):
 ##########################################################################################################################
 def GET_ACCESSRULE_LIST(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID):
     import json
-    import sys
     import requests
     server = "https://"+IP
     ACP_ID=ACCESS_POLICY_ID
@@ -109,7 +107,6 @@ def GET_ACCESSRULE_LIST(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID):
 ##########################################################################################################################
 def GET_ACCESSRULE_DETAIL(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID,RULE_ID):
     import json
-    import sys
     import requests
     server = "https://"+IP
     ACP_ID=ACCESS_POLICY_ID
@@ -141,7 +138,6 @@ def GET_ACCESSRULE_DETAIL(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID,RULE_ID):
 def GET_OBJ_NETWORKS(IP,DOMAIN_UUID,TOKEN_ID,TYPE):
     # type variable could be 4 values : hosts,networks,networkaddresses(includes hosts and networks),ranges
     import json
-    import sys
     import requests 
     r = None
     server="https://"+IP
@@ -171,7 +167,6 @@ def GET_OBJ_NETWORKS(IP,DOMAIN_UUID,TOKEN_ID,TYPE):
 def GET_NETWORKS_GROUPS(IP,DOMAIN_UUID,TOKEN_ID):
     # type variable could be 4 values : hosts,networks,networkaddresses(includes hosts and networks),ranges
     import json
-    import sys
     import requests 
     r = None
     server="https://"+IP
