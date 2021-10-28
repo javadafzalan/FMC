@@ -1,5 +1,4 @@
 def GET_AUTH_TOKEN(IP,USERNAME,PASSWORD):
-    import json
     import sys
     import requests
     server = "https://"+IP
@@ -37,8 +36,9 @@ def GET_DOMAIN_UUID(IP,AUTH_TOKEN):
         if (status_code == 200):
             #print("GET successful. Response data --> ")
             json_resp = json.loads(resp)
-            domain_uuid=json_resp["items"][0]["uuid"]
-            domain_name=json_resp["items"][0]["name"]
+            domain = json_resp["items"][0]
+            domain_uuid = domain["uuid"]
+            domain_name = domain["name"]
             return domain_name,domain_uuid
         else:
             r.raise_for_status()
@@ -78,7 +78,6 @@ def GET_ACP_LIST(IP,DOMAIN_UUID,TOKEN_ID):
 ##########################################################################################################################
 def GET_ACCESSRULE_LIST(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID):
     import json
-    import sys
     import requests
     server = "https://"+IP
     ACP_ID=ACCESS_POLICY_ID
@@ -108,7 +107,6 @@ def GET_ACCESSRULE_LIST(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID):
 ##########################################################################################################################
 def GET_ACCESSRULE_DETAIL(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID,RULE_ID):
     import json
-    import sys
     import requests
     server = "https://"+IP
     ACP_ID=ACCESS_POLICY_ID
@@ -140,7 +138,6 @@ def GET_ACCESSRULE_DETAIL(IP,DOMAIN_UUID,TOKEN_ID,ACCESS_POLICY_ID,RULE_ID):
 def GET_OBJ_NETWORKS(IP,DOMAIN_UUID,TOKEN_ID,TYPE):
     # type variable could be 4 values : hosts,networks,networkaddresses(includes hosts and networks),ranges
     import json
-    import sys
     import requests 
     r = None
     server="https://"+IP
@@ -170,7 +167,6 @@ def GET_OBJ_NETWORKS(IP,DOMAIN_UUID,TOKEN_ID,TYPE):
 def GET_NETWORKS_GROUPS(IP,DOMAIN_UUID,TOKEN_ID):
     # type variable could be 4 values : hosts,networks,networkaddresses(includes hosts and networks),ranges
     import json
-    import sys
     import requests 
     r = None
     server="https://"+IP

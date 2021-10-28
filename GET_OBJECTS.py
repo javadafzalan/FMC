@@ -1,19 +1,11 @@
-from FMC_Functions import GET_ACP_LIST
-from FMC_Functions import GET_ACCESSRULE_LIST
-from FMC_Functions import GET_ACCESSRULE_DETAIL
 from FMC_Functions import GET_AUTH_TOKEN
 from FMC_Functions import GET_DOMAIN_UUID
 from FMC_Functions import GET_OBJ_NETWORKS
 from FMC_Functions import GET_NETWORKS_GROUPS
-import time
 ## Main program  ##
-import json
-SERVER_IP="172.16.71.21"
-#comment for credentials
-##another edit for credentials
-#also another comment
-USERNAME="admin"
-PASSWORD="P@ssw0rd"
+SERVER_IP="SERVER_IP"
+USERNAME="SERVER_USERNAME"
+PASSWORD="SERVER_PASSWORD"
 #Generate Token
 token=GET_AUTH_TOKEN(SERVER_IP,USERNAME,PASSWORD)
 print(token)
@@ -32,7 +24,7 @@ for item in host_list["items"]:
         "value" : item["value"],
     })
 
-Print("List of Network Objects(JSON Format) : ")
+print("List of Network Objects(JSON Format) : ")
 for i in OBJECT_DETAIL_LIST:
     print(i)
 ###########################################################
@@ -52,7 +44,7 @@ for item in network_groups["items"]:
         "value" : item["objects"],
         
         })
-Print("List of Network group Objects(JSON Format) : ")
+print("List of Network group Objects(JSON Format) : ")
 for item in GROUP_OBJ_DETAIL_LIST:
     print(item)
     print("###############")
