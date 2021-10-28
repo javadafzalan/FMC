@@ -32,7 +32,7 @@ for item in host_list["items"]:
         "value" : item["value"],
     })
 
-Print("List of Network Objects(JSON Format) : ")
+print("List of Network Objects(JSON Format) : ")
 for i in OBJECT_DETAIL_LIST:
     print(i)
 ###########################################################
@@ -52,7 +52,7 @@ for item in network_groups["items"]:
         "value" : item["objects"],
         
         })
-Print("List of Network group Objects(JSON Format) : ")
+print("List of Network group Objects(JSON Format) : ")
 for item in GROUP_OBJ_DETAIL_LIST:
     print(item)
     print("###############")
