@@ -9,9 +9,6 @@ import time
 ## Main program  ##
 import json
 SERVER_IP="172.16.71.21"
-#comment for credentials
-##another edit for credentials
-#also another comment
 USERNAME="admin"
 PASSWORD="P@ssw0rd"
 #Generate Token
